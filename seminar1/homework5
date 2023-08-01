@@ -42,7 +42,7 @@ void PrintArray(int[] numbers)
 }
 
 /* 
-Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов с нечётными индексами.
 [3, 7, 23, 12] -> 19
 [-4, -6, 89, 6] -> 0
 */
@@ -79,50 +79,43 @@ int RandomNumbers(int ElementNumbers, int min, int max)
 [3,21 7,04 22,93 -2,71 78,24] -> 80,95
 */
 
-Console.WriteLine("Введите длину массива  ");
-
+Console.WriteLine("Введите размер массива");
 int size = Convert.ToInt32(Console.ReadLine());
-
-double[] number = new double[size];
-
-FillArrayRandomNumbers(number);
-
-Console.WriteLine("Массив: ");
-
-PrintArray(number);
-
-
+double[] numbers = new double[size];
+FillArrayRandomNumbers(numbers);
+Console.WriteLine("Вот наш массив: ");
+PrintArray(numbers);
 double min = Int32.MaxValue;
 double max = Int32.MinValue;
 
-for (int a = 0; a < number.Length; a++)
+for (int z = 0; z < numbers.Length; z++)
 {
-    if (number[a] > max)
+    if (numbers[z] > max)
         {
-            max = number[a];
+            max = numbers[z];
         }
-    if (number[a] < min)
+    if (numbers[z] < min)
         {
-            min = number[a];
+            min = numbers[z];
         }
 }
 
-Console.WriteLine($"Всего в массиве {number.Length} чисел. Максимальное = {max}, Минимальное = {min}");
-Console.WriteLine($"Разность между максимальным и минимальным = {max - min}");
+Console.WriteLine($"всего {numbers.Length} чисел. Максимальное значение = {max}, минимальное значение = {min}");
+Console.WriteLine($"Разница между максимальным и минимальным значением = {max - min}");
 
-void FillArrayRandomNumbers(double[] number)
+void FillArrayRandomNumbers(double[] numbers)
 {
-    for(int i = 0; i < number.Length; i++)
+    for(int i = 0; i < numbers.Length; i++)
         {
-            number[i] = Convert.ToDouble(new Random().Next(100,1000)) / 100;
+            numbers[i] = Convert.ToDouble(new Random().Next(100,1000)) / 100;
         }
 }
-void PrintArray(double[] number)
+void PrintArray(double[] numbers)
 {
     Console.Write("[ ");
-    for(int i = 0; i < number.Length; i++)
+    for(int i = 0; i < numbers.Length; i++)
         {
-            Console.Write(number[i] + " ");
+            Console.Write(numbers[i] + " ");
         }
     Console.Write("]");
     Console.WriteLine();
